@@ -47,6 +47,7 @@ export default function Signup() {
       password,
     });
 
+    console.log("Auth Signup Data:", data);
     if (error) {
       setLoading(false);
       return setError(error.message);
@@ -69,6 +70,7 @@ export default function Signup() {
     setLoading(false);
 
     if (profileError) {
+      console.error("Profile Insert Error:", profileError);
       return setError("Signup successful but profile save failed");
     }
 
