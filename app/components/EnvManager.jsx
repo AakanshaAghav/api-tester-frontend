@@ -39,7 +39,7 @@ export function EnvManager({ activeEnv, setActiveEnv, envs, setEnvs }) {
         Environments
       </h3>
 
-      {/* ENV TABS (Layout remains the same) */}
+      {/* ENV TABS */}
       <div className="flex gap-2">
         {["dev", "staging", "prod"].map((env) => (
           <button
@@ -57,7 +57,7 @@ export function EnvManager({ activeEnv, setActiveEnv, envs, setEnvs }) {
         ))}
       </div>
 
-      {/* KEY VALUE INPUT (Layout remains the same) */}
+      {/* KEY VALUE INPUT  */}
       <div className="flex gap-2">
         <input
           value={keyName}

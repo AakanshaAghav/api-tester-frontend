@@ -178,8 +178,8 @@ export default function Signup() {
           onClick={handleSignup}
           disabled={loading || !!successMessage}
           className={`w-full flex items-center justify-center gap-2 py-3 rounded-lg font-semibold text-white shadow-lg transition-all duration-300 ${loading || !!successMessage
-              ? "bg-green-800 cursor-not-allowed"
-              : "bg-green-600 hover:bg-green-500 hover:shadow-green-500/50"
+            ? "bg-green-800 cursor-not-allowed"
+            : "bg-green-600 hover:bg-green-500 hover:shadow-green-500/50"
             }`}
         >
           {loading ? (
