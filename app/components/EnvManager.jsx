@@ -2,13 +2,10 @@
 import { useState, useEffect } from "react";
 
 export function EnvManager({ activeEnv, setActiveEnv, envs, setEnvs }) {
-  // useEffect logic remains unchanged, correctly managing state and localStorage
+  
   const [keyName, setKeyName] = useState("");
   const [keyValue, setKeyValue] = useState("");
 
-  // IMPORTANT: For real-world apps, replace localStorage with Firestore.
-  // Given the context of the user's existing code structure using localStorage
-  // for environment variables, I will keep it for now.
   useEffect(() => {
     const saved = localStorage.getItem("api_envs");
     if (saved) setEnvs(JSON.parse(saved));

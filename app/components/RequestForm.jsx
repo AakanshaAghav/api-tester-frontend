@@ -29,7 +29,6 @@ export function RequestForm({
   const [newCollectionName, setNewCollectionName] = useState("");
 
   const renderTabContent = () => {
-    // Note: KeyValueEditor component also needs its internal styling updated
     switch (activeTab) {
       case "Body":
         return (
@@ -128,7 +127,6 @@ export function RequestForm({
           <button
             onClick={() => setIsSaveModalOpen(true)}
             disabled={loading}
-            // ✨ Updated Save Button colors
             className={`p-2 w-10 rounded-lg font-semibold text-white transition duration-150 shadow-md flex items-center justify-center ${
               loading
                 ? "bg-yellow-700/50 cursor-not-allowed"
@@ -142,11 +140,9 @@ export function RequestForm({
 
         {/* Tab Content Area */}
         <div
-          // ✨ Dark mode styles for tab area container
           className="flex-grow border border-gray-700 rounded-lg bg-gray-900 flex flex-col overflow-hidden"
         >
           <div
-            // ✨ Dark mode styles for tab bar
             className="flex space-x-4 border-b border-gray-700 px-4 py-2 bg-gray-800"
           >
             {["Body", "Headers", "Params"].map((tab) => (
@@ -154,7 +150,6 @@ export function RequestForm({
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`font-semibold pb-1 cursor-pointer text-sm transition duration-150 ${
-                  // ✨ Dark mode active tab indicator
                   activeTab === tab
                     ? "text-green-400 border-b-2 border-green-400"
                     : "text-gray-400 hover:text-green-300"
@@ -170,8 +165,6 @@ export function RequestForm({
           </div>
         </div>
       </section>
-
-      {/* MODALS (Assuming Modals.jsx and KeyValueEditor.jsx will be updated separately for dark mode) */}
 
       {/* SAVE REQUEST MODAL */}
       {isSaveModalOpen && (
@@ -192,12 +185,9 @@ export function RequestForm({
               let parsedBody = null;
               if (bodyContent) {
                 try {
-                  // We should not use alert here. This needs to be changed to a custom modal/toast.
-                  // For now, retaining user's logic to prevent function change.
                   parsedBody = JSON.parse(bodyContent);
                 } catch (err) {
                   console.error("Request body is not valid JSON:", err);
-                  // Using console.error instead of alert as per instructions
                   alert("Request body is not valid JSON");
                   return;
                 }
@@ -228,12 +218,10 @@ export function RequestForm({
               } else {
                 const data = await res.json();
                 console.error("Error saving request:", data);
-                // Using console.error instead of alert as per instructions
                 alert("Failed to save request");
               }
             } catch (err) {
               console.error(err);
-              // Using console.error instead of alert as per instructions
               alert("Error saving request");
             } finally {
               setLocalLoading(false);

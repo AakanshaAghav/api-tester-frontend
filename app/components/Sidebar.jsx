@@ -14,7 +14,6 @@ export function Sidebar({
 }) {
   const router = useRouter();
 
-  // ✅ FIXED LOGOUT
   const handleLogout = async () => {
     await supabase.auth.signOut();
     localStorage.clear();
@@ -22,7 +21,6 @@ export function Sidebar({
   };
 
   return (
-    // ✨ Dark Sidebar Container
     <aside className="w-64 bg-gray-800 border-r border-gray-700 shadow-xl flex flex-col p-4 transition-colors duration-200">
       {/* Header and Logout Button */}
       <div className="flex items-center justify-between mb-4">
@@ -31,7 +29,6 @@ export function Sidebar({
         </h2>
         <button
           onClick={handleLogout}
-          // ✨ Dark theme red button
           className="bg-red-700 hover:bg-red-600 text-gray-100 px-3 py-1 rounded text-sm flex items-center gap-1 transition duration-150"
         >
           <LogOut className="h-4 w-4" /> Logout
@@ -52,7 +49,6 @@ export function Sidebar({
               <div key={col.id}>
                 <div
                   onClick={() => handleCollectionToggle(col.id)}
-                  // ✨ Dark collection item style
                   className="text-gray-300 hover:text-green-400 cursor-pointer p-1 rounded-md hover:bg-gray-700 flex justify-between items-center transition duration-150"
                 >
                   <span className="flex items-center space-x-1">
@@ -64,7 +60,6 @@ export function Sidebar({
                     <span>{col.name}</span>
                   </span>
 
-                  {/* ✨ Dark badge style */}
                   <span className="text-xs font-mono text-gray-300 bg-gray-700 px-2 py-0.5 rounded-full">
                     {col.item_count}
                   </span>
@@ -77,7 +72,6 @@ export function Sidebar({
                         <div
                           key={item.id}
                           onClick={() => loadItemDetails(item.id, "collection")}
-                          // ✨ Dark collection item style
                           className={`p-1 rounded-md cursor-pointer hover:bg-gray-700 transition text-xs flex items-center ${
                             selectedHistoryId === item.id
                               ? "bg-green-900/40 font-semibold text-gray-100 border-l-2 border-green-500"
@@ -85,7 +79,6 @@ export function Sidebar({
                           }`}
                         >
                           <span
-                            // ✨ Dark method color contrast
                             className={`font-mono text-xs mr-1 ${
                               item.method === "GET"
                                 ? "text-green-400"
@@ -103,7 +96,6 @@ export function Sidebar({
                         </div>
                       ))
                     ) : (
-                      // ✨ Dark empty state text
                       <div className="text-gray-500 text-xs py-1">
                         {col.item_count > 0
                           ? "Loading items..."
@@ -129,7 +121,6 @@ export function Sidebar({
             <div
               key={item.id}
               onClick={() => loadItemDetails(item.id, "history")}
-              // ✨ Dark history item style
               className={`p-2 rounded-md border-l-4 cursor-pointer transition ${
                 selectedHistoryId === item.id
                   ? "bg-green-900/40 border-green-500 text-gray-100" // Selected state with green accent
@@ -137,7 +128,6 @@ export function Sidebar({
               }`}
             >
               <span
-                // ✨ Dark method color contrast
                 className={`font-mono text-xs ${
                   item.method === "GET"
                     ? "text-green-400"
@@ -151,7 +141,6 @@ export function Sidebar({
                 {item.method}
               </span>
               <span className="truncate block text-xs">{item.url}</span>
-              {/* ✨ Dark metadata text */}
               <span className="text-xs text-gray-400 block">
                 Status: {item.response_status || "-"} |{" "}
                 {new Date(item.created_at).toLocaleTimeString()}

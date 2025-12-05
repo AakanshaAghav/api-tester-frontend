@@ -2,7 +2,6 @@
 import React from "react";
 
 export function KeyValueEditor({ data, setData }) {
-  // ✅ FIX: Define the function here
   const handleKeyValueChange = (index, field, value) => {
     setData((prev) =>
       prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
