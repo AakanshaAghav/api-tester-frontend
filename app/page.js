@@ -2,28 +2,19 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "./lib/supabaseClient";
-// Import icons from lucide-react
 import { ArrowRight, Cloud, Code, GitBranch, ShieldCheck, Zap } from "lucide-react";
-
-// The 'supabase' import from your original code is assumed to be correctly defined in './lib/supabaseClient'
 
 export default function Home() {
     const router = useRouter();
-
-    // Effect to check if a user is logged in and redirect to dashboard
     useEffect(() => {
         const checkUser = async () => {
             const { data } = await supabase.auth.getSession();
-
-            // Only redirect if user is already logged in
             if (data.session) {
-                // Since 'router' is a stable hook result, it's safe to use here.
                 router.push("/dashboard");
             }
         };
-
         checkUser();
-    }, []); // Added router to the dependency array for best practice
+    }, []); 
 
     const FeatureCard = ({ Icon, title, description }) => (
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 flex flex-col items-start text-left shadow-2xl transition-all duration-300 hover:bg-gray-700 hover:border-blue-500 hover:scale-[1.02] cursor-default">
@@ -36,7 +27,6 @@ export default function Home() {
     );
 
     return (
-        // Changed background to a subtle dark gradient
         <div className="min-h-screen bg-gray-900 flex flex-col items-center pt-20 pb-16 px-4">
             {/* Hero Section */}
             <header className="text-center text-white max-w-4xl mx-auto mb-20">
@@ -115,8 +105,6 @@ export default function Home() {
                     />
                 </div>
             </section>
-
-            {/* You can remove the original footer animation or replace it with a more professional footer if needed */}
         </div>
     );
 }
